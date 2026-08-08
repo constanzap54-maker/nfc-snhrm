@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SNHRM | Ficha de planta</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f3f5f1;
+            color: #26352b;
+        }
+
+        header {
+            background: #2f4f38;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .dato {
+            margin: 15px 0;
+            padding: 12px;
+            background: #eef2ed;
+            border-radius: 8px;
+        }
+
+        .id {
+            font-weight: bold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>SNHRM</h1>
+    <p>Registro de restauración ecológica</p>
+</header>
+
+<main>
+
+    <div class="card">
+
+        <h1 id="nombre">Cargando...</h1>
+
+        <div class="dato">
+            <strong>ID:</strong>
+            <span id="id"></span>
+        </div>
+
+        <div class="dato">
+            <strong>Especie:</strong>
+            <span id="especie"></span>
+        </div>
+
+        <div class="dato">
+            <strong>Estado:</strong>
+            <span id="estado"></span>
+        </div>
+
+        <div class="dato">
+            <strong>Fecha de registro:</strong>
+            <span id="fecha"></span>
+        </div>
+
+    </div>
+
+</main>
+
+<script>
+
+const plantas = {
+
+    "M_MO_01": {
+        nombre: "Molle",
+        especie: "Schinus molle",
+        estado: "Registrada",
+        fecha: "2026"
+    },
+
+    "M_HU_01": {
+        nombre: "Huingán",
+        especie: "Schinus polygamus",
+        estado: "Registrada",
+        fecha: "2026"
+    },
+
+    "M_CR_01": {
+        nombre: "Coralillo",
+        especie: "Lycium chilense",
+        estado: "Registrada",
+        fecha: "2026"
+    }
+
+};
+
+
+// Obtiene el ID desde la URL
+
+const partes = window.location.pathname.split("/");
+
+const id = partes[partes.length - 1];
+
+
+// Busca la planta
+
+const planta = plantas[id];
+
+
+// Muestra la información
+
+if (planta) {
+
+    document.getElementById("nombre").textContent =
+        planta.nombre;
+
+    document.getElementById("id").textContent =
+        id;
+
+    document.getElementById("especie").textContent =
+        planta.especie;
+
+    document.getElementById("estado").textContent =
+        planta.estado;
+
+    document.getElementById("fecha").textContent =
+        planta.fecha;
+
+} else {
+
+    document.getElementById("nombre").textContent =
+        "Planta no encontrada";
+
+    document.getElementById("id").textContent =
+        id;
+
+}
+
+</script>
+
+</body>
+</html>
